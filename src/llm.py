@@ -1,1 +1,11 @@
-# llm.py
+from openai import OpenAI
+client = OpenAI()
+
+def call_llm(prompt):
+    resp = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0
+    )
+    return resp.choices[0].message.content
+
